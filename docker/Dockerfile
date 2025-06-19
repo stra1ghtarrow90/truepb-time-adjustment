@@ -1,11 +1,13 @@
-# Stage 1 (optional build step if you have a JS bundler) omitted
 FROM nginx:alpine
 
-# Copy static assets into the webroot
 COPY ./ /usr/share/nginx/html
 
-# Optionally drop the default Nginx conf and add your own
-# COPY nginx.conf /etc/nginx/nginx.conf
+RUN mkdir -p /var/cache/nginx/client_temp /var/run /run \
+    && chown -R 1004:1004 /usr/share/nginx/html /var/cache/nginx /var/run /run
+
+USER 1004
 
 EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
 
