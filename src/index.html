@@ -1,0 +1,135 @@
+<!-- TruePB calculator allows you to find out what you actually ran for various races across the uk and a super shoe conversion too. This was created by Michael Salter of Leeds AC primarily for learning purposes but also so users could understand theyre true times -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Version control -->
+<meta name="version" content="1.0.0" />	
+
+<link rel="icon" type="image/png" href="favicon.png" />
+
+<!-- Title that appears in WhatsApp preview -->
+<meta property="og:title" content="TruePB.net" />
+
+<!-- Short description -->
+<meta property="og:description" content="Find out what you actually ran." />
+
+<!-- Image preview (must be a full URL) -->
+<meta property="og:image" content="https://truepb.net/images/preview.jpg" />
+
+<!-- URL of the page -->
+<meta property="og:url" content="https://truepb.net" />
+
+<!-- Optional: Type of content -->
+<meta property="og:type" content="website" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruePB: Find out what you actually ran</title>
+
+  <!-- Link to your stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Link to main script that loads all logic -->
+  <script type="module" src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-content">
+  <div class="layout-container">
+    <!-- 🖼 Left: Barrowford Image -->
+    <div class="image-panel">
+      <img src="images/background.png" alt="Barrowford course image" />
+    </div>
+
+    <!-- 📋 Right: All calculators -->
+    <div class="calculator-panel">
+      <h1>TruePB Adjustment Tools</h1>
+ <p class="subtitle">Find out your actual PB using our state-of-the-art reality check calculators.</p>
+      <!-- Tab Switch Buttons -->
+      <div class="tab-buttons">
+        <button onclick="showTab('course')">Course Adjuster</button>
+        <button onclick="showTab('shoe')">Super Shoe Adjuster</button>
+      </div>
+
+      <!-- Course Time Adjuster Tab -->
+      <div id="course-tab" class="tab">
+        <h2>Course Time Adjuster</h2>
+        <form id="race-form">
+          <label for="distance">Distance:</label>
+          <select id="distance">
+            <option value="5K">5K</option>
+            <option value="10K">10K</option>
+            <option value="Half Marathon">Half Marathon</option>
+            <option value="Marathon">Marathon</option>
+          </select>
+
+          <label for="course">Course:</label>
+          <select id="course"></select>
+
+          <label for="time">Your Time:</label>
+          <input type="text" id="time" placeholder="e.g., 15:00" />
+
+          <button type="submit">Adjust Time</button>
+        </form>
+
+        <h3 id="adjusted-time"></h3>
+      </div>
+
+      <!-- Super Shoe Adjuster Tab -->
+      <div id="shoe-tab" class="tab" style="display: none;">
+        <h2>Super Shoe Adjuster</h2>
+        <form id="shoe-form">
+          <label for="shoe-distance">Distance:</label>
+          <select id="shoe-distance">
+            <option value="800m">800m</option>
+            <option value="1500m">1500m</option>
+            <option value="3K">3K</option>
+            <option value="5K">5K</option>
+            <option value="10K">10K</option>
+            <option value="Half Marathon">Half Marathon</option>
+            <option value="Marathon">Marathon</option>
+          </select>
+
+          <label for="shoe-time">Your Time:</label>
+          <input type="text" id="shoe-time" placeholder="e.g., 8:18" />
+
+          <label for="year">Year:</label>
+          <input type="number" id="year" placeholder="e.g., 2024" />
+
+          <button type="submit">Adjust Time</button>
+        </form>
+
+        <h3 id="shoe-adjusted-time"></h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab switching script -->
+  <script>
+    function showTab(tab) {
+      document.getElementById("course-tab").style.display = tab === "course" ? "block" : "none";
+      document.getElementById("shoe-tab").style.display = tab === "shoe" ? "block" : "none";
+    }
+  </script>
+  </div>
+
+<footer class="footer">
+  <p>Created by Michael Salter of Leeds City AC</p>
+
+  <!-- Version info -->
+  <p class="version-info">Version: <span id="app-version"></span></p>
+
+  <div class="social-icons">
+    <a href="https://www.strava.com/athletes/1723038" target="_blank" aria-label="Strava">
+      <img src="icons/strava.svg" alt="Strava icon" />
+    </a>
+    <a href="https://www.instagram.com/msalter344" target="_blank" aria-label="Instagram">
+      <img src="icons/insta.svg" alt="Instagram icon" />
+    </a>
+  </div>
+</footer>
+<script>
+  const version = document.querySelector('meta[name="version"]').getAttribute('content');
+  document.getElementById('app-version').textContent = version;
+</script>
+</body>
+</html>

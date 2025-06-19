@@ -1,0 +1,10 @@
+services:
+  time-adjuster:
+    build: .
+    image: truepb/time-adjuster:latest
+    container_name: truepb-adjuster
+    ports:
+      - "8090:80"        # change to 8000 if Flask
+    restart: unless-stopped
+
+
