@@ -1,6 +1,7 @@
 services:
   time-adjuster:
     build: .
+    user: 1004:1004 
     image: truepb/time-adjuster:latest
     container_name: truepb-adjuster
     ports:
